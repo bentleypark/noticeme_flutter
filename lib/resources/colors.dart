@@ -1,0 +1,4 @@
+const SPLASH_COLOR1 = '#3cd6e0';
+const SPLASH_COLOR2 = '#acefe3';
+
+const ONBOARDING_TEXT_BUTTON_COLOR = '60979e';

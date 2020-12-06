@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
+import 'package:noticemeflutter/resources/colors.dart';
+import 'package:noticemeflutter/resources/strings.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../getit.dart';
@@ -55,9 +57,10 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
                 child: Text(
                   '시작하기',
                   style: TextStyle(
-                      color: provider.colorFromHex('#60979e'),
+                      color:
+                          provider.colorFromHex(ONBOARDING_TEXT_BUTTON_COLOR),
                       fontSize: 18,
-                      fontFamily: 'NotoSans',
+                      fontFamily: FONT_NOTOSANS,
                       fontWeight: FontWeight.w700),
                 ),
                 onPressed: () {

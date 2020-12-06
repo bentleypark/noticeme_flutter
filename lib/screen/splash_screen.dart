@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
+import 'package:noticemeflutter/resources/colors.dart';
+import 'package:noticemeflutter/resources/strings.dart';
 import 'package:noticemeflutter/screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:websafe_svg/websafe_svg.dart';
@@ -17,7 +19,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenScreenState extends State<SplashScreen> {
   final provider = getIt<NoticemeProvider>();
   SharedPreferences _prefs;
-  String onBoardingKey = 'onBoarding';
   bool isOnBoardingShowed;
 
   startTime() async {
@@ -38,7 +39,7 @@ class _SplashScreenScreenState extends State<SplashScreen> {
   getOnBoardingScreenShowed() async {
     _prefs = await SharedPreferences.getInstance();
     setState(() {
-      isOnBoardingShowed = _prefs.getBool(onBoardingKey) ?? false;
+      isOnBoardingShowed = _prefs.getBool(KEY_ONBOARDING) ?? false;
     });
   }
 
@@ -58,9 +59,9 @@ class _SplashScreenScreenState extends State<SplashScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              provider.colorFromHex("#3cd6e0"),
-              provider.colorFromHex("#3cd6e0"),
-              provider.colorFromHex("#acefe3")
+              provider.colorFromHex(SPLASH_COLOR1),
+              provider.colorFromHex(SPLASH_COLOR1),
+              provider.colorFromHex(SPLASH_COLOR2)
             ],
           ),
         ),

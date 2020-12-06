@@ -3,6 +3,6 @@ import 'package:noticemeflutter/provider/noticeme_provider.dart';
 
 final getIt = GetIt.instance;
 
-void setup() {
+Future<void> setup() async {
   getIt.registerSingleton<NoticemeProvider>(NoticemeProvider());
 }
