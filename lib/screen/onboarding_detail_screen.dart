@@ -1,24 +1,28 @@
-
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../getit.dart';
+import 'homescreen.dart';
 
 class OnBoardingDetailScreen extends StatefulWidget {
-
   final int currentPage;
 
- OnBoardingDetailScreen({this.currentPage});
+  OnBoardingDetailScreen({this.currentPage});
 
   @override
   _OnBoardingDetailScreenState createState() => _OnBoardingDetailScreenState();
 }
 
 class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
-
   final provider = getIt<NoticemeProvider>();
+
+  @override
+  void initState() {
+    super.initState();
+    checkPage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,8 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
               height: double.infinity,
               alignment: Alignment.center,
               child: Image(
-                image: AssetImage(provider.getCurrentGuideImage(widget.currentPage)),
+                image: AssetImage(
+                    provider.getCurrentGuideImage(widget.currentPage)),
               ),
               // fit: BoxFit.fill,
             )),
@@ -41,8 +46,35 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
             width: 260,
             height: 4,
           ),
-        )
+        ),
+        Visibility(
+            visible: checkPage(),
+            child: Container(
+              alignment: Alignment(0.8, 0.85),
+              child: TextButton(
+                child: Text(
+                  '시작하기',
+                  style: TextStyle(
+                      color: provider.colorFromHex('#60979e'),
+                      fontSize: 18,
+                      fontFamily: 'NotoSans',
+                      fontWeight: FontWeight.w700),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
+              ),
+            ))
       ],
     );
+  }
+
+  bool checkPage() {
+    if (widget.currentPage == 3) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

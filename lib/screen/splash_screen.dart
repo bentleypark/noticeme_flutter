@@ -1,11 +1,53 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
+import 'package:noticemeflutter/screen/onboarding_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../getit.dart';
+import 'homescreen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenScreenState createState() => _SplashScreenScreenState();
+}
+
+class _SplashScreenScreenState extends State<SplashScreen> {
   final provider = getIt<NoticemeProvider>();
+  SharedPreferences _prefs;
+  String onBoardingKey = 'onBoarding';
+  bool isOnBoardingShowed;
+
+  startTime() async {
+    var duration = new Duration(seconds: 3);
+    return Timer(duration, route);
+  }
+
+  route() {
+    if (isOnBoardingShowed) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => OnBoardingScreen()));
+    }
+  }
+
+  getOnBoardingScreenShowed() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isOnBoardingShowed = _prefs.getBool(onBoardingKey) ?? false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getOnBoardingScreenShowed();
+    startTime();
+  }
 
   @override
   Widget build(BuildContext context) {
