@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:noticemeflutter/getit.dart';
+import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/screen/splash_screen.dart';
 
 void main() {
+  setup();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final provider = getIt<NoticemeProvider>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,13 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: SplashScreen(),
-        backgroundColor: _colorFromHex("#3cd6e0"),
       ),
     );
   }
-}
-
-Color _colorFromHex(String hexColor) {
-  final hexCode = hexColor.replaceAll('#', '');
-  return Color(int.parse('FF$hexCode', radix: 16));
 }
