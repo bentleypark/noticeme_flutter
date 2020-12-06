@@ -18,7 +18,13 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: SplashScreen(),
+        backgroundColor: _colorFromHex("#3cd6e0"),
       ),
     );
   }
+}
+
+Color _colorFromHex(String hexColor) {
+  final hexCode = hexColor.replaceAll('#', '');
+  return Color(int.parse('FF$hexCode', radix: 16));
 }

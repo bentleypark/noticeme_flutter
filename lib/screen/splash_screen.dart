@@ -2,27 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 class SplashScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(
-          alignment: Alignment.center,
-          color: _colorFromHex("#3cd6e0"),
+          alignment: Alignment(0.0, -0.3),
           child: WebsafeSvg.asset(
             'images/logo.svg',
-            alignment: Alignment.center,
             width: 177,
             height: 115,
+          ),
+        ),
+        Container(
+          alignment: Alignment(-0.5, 0.2),
+          child: WebsafeSvg.asset(
+            'images/splash_text1.svg',
+            width: 255,
+            height: 55,
+          ),
+        ),
+        Container(
+          alignment: Alignment(-0.5, 0.5),
+          child: WebsafeSvg.asset(
+            'images/splash_text2.svg',
+            width: 166,
+            height: 78,
           ),
         )
       ],
     );
   }
-}
-
-Color _colorFromHex(String hexColor) {
-  final hexCode = hexColor.replaceAll('#', '');
-  return Color(int.parse('FF$hexCode', radix: 16));
 }
