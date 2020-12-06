@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/instance_manager.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/resources/strings.dart';
@@ -18,7 +20,7 @@ class OnBoardingDetailScreen extends StatefulWidget {
 }
 
 class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
-  final provider = getIt<NoticemeProvider>();
+  NoticemeProvider provider = Get.find();
 
   @override
   void initState() {
@@ -64,8 +66,7 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
                       fontWeight: FontWeight.w700),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Get.off(HomeScreen());
                 },
               ),
             ))

@@ -1,6 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/instance_manager.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/resources/strings.dart';
@@ -17,8 +18,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenScreenState extends State<SplashScreen> {
-  final provider = getIt<NoticemeProvider>();
+  NoticemeProvider provider = Get.put(NoticemeProvider());
   SharedPreferences _prefs;
+
   bool isOnBoardingShowed;
 
   startTime() async {
@@ -28,11 +30,9 @@ class _SplashScreenScreenState extends State<SplashScreen> {
 
   route() {
     if (isOnBoardingShowed) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Get.off(HomeScreen());
     } else {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => OnBoardingScreen()));
+      Get.off(OnBoardingScreen());
     }
   }
 
