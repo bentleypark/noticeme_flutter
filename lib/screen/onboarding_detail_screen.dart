@@ -33,16 +33,20 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
     return Stack(
       children: <Widget>[
         Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 10),
-            child: Container(
-              height: double.infinity,
-              alignment: Alignment.center,
-              child: Image(
+          padding: EdgeInsets.only(top: 30, bottom: 10),
+          child: Container(
+            height: double.infinity,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
                 image: AssetImage(
-                    provider.getCurrentGuideImage(widget.currentPage)),
+                  provider.getCurrentGuideImage(widget.currentPage),
+                ),
               ),
-              // fit: BoxFit.fill,
-            )),
+            ), // fit: BoxFit.fill,
+          ),
+        ),
         Container(
           alignment: Alignment(0.0, 0.92),
           child: WebsafeSvg.asset(
