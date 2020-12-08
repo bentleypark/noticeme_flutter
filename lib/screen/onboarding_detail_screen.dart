@@ -58,16 +58,12 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
         Visibility(
             visible: checkPage(),
             child: Container(
-              alignment: Alignment(0.8, 0.85),
-              child: TextButton(
-                child: Text(
-                  '시작하기',
-                  style: TextStyle(
-                      color:
-                          provider.colorFromHex(ONBOARDING_TEXT_BUTTON_COLOR),
-                      fontSize: 18,
-                      fontFamily: FONT_NOTOSANS,
-                      fontWeight: FontWeight.w700),
+              alignment: Alignment(0.0, 0.85),
+              child: MaterialButton(
+                child: WebsafeSvg.asset(
+                  'images/btn_start.svg',
+                  width: 218,
+                  height: 67,
                 ),
                 onPressed: () {
                   Get.off(HomeScreen());
