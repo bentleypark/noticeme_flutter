@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noticemeflutter/resources/strings.dart';
-import 'package:noticemeflutter/screen/onboarding_detail_screen.dart';
+import 'package:noticemeflutter/ui/onboarding/onboarding_detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingScreen extends StatefulWidget {

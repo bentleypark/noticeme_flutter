@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
-
-import '../getit.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  final provider = getIt<NoticemeProvider>();
+  NoticemeProvider provider = Get.put(NoticemeProvider());
   
   @override
   Widget build(BuildContext context) {

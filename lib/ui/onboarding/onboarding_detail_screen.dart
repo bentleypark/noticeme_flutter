@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
-import 'package:noticemeflutter/resources/colors.dart';
-import 'package:noticemeflutter/resources/strings.dart';
 import 'package:websafe_svg/websafe_svg.dart';
-
-import '../getit.dart';
-import 'homescreen.dart';
+import '../home/homescreen.dart';
 
 class OnBoardingDetailScreen extends StatefulWidget {
   final int currentPage;
@@ -20,7 +16,7 @@ class OnBoardingDetailScreen extends StatefulWidget {
 }
 
 class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
-  NoticemeProvider provider = Get.find();
+  NoticemeProvider provider = Get.put(NoticemeProvider());
 
   @override
   void initState() {
@@ -56,20 +52,21 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
           ),
         ),
         Visibility(
-            visible: checkPage(),
-            child: Container(
-              alignment: Alignment(0.0, 0.85),
-              child: MaterialButton(
-                child: WebsafeSvg.asset(
-                  'images/btn_start.svg',
-                  width: 218,
-                  height: 67,
-                ),
-                onPressed: () {
-                  Get.off(HomeScreen());
-                },
+          visible: checkPage(),
+          child: Container(
+            alignment: Alignment(0.0, 0.85),
+            child: MaterialButton(
+              child: WebsafeSvg.asset(
+                'images/btn_start.svg',
+                width: 218,
+                height: 67,
               ),
-            ))
+              onPressed: () {
+                Get.off(HomeScreen());
+              },
+            ),
+          ),
+        )
       ],
     );
   }
