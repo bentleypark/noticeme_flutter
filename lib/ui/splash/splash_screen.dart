@@ -4,7 +4,7 @@ import 'package:noticemeflutter/controller/splash/SplashController.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-class SplashScreen extends GetView<SplashController> {
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
