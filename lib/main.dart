@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:noticemeflutter/binding/guide_binding.dart';
 import 'package:noticemeflutter/getit.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/strings.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
       title: APP_NAME,
       debugShowCheckedModeBanner: false,
       getPages: routes(),
-      initialRoute: '/splash',
+      // initialBinding: SplashBinding(),
+      initialRoute: Routes.SPLASH,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,

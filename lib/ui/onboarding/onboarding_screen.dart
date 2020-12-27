@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:noticemeflutter/controller/guide/guide_controller.dart';
 import 'package:noticemeflutter/resources/strings.dart';
 import 'package:noticemeflutter/ui/onboarding/onboarding_detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,30 +31,35 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: PageView(
-          physics: ClampingScrollPhysics(),
-          controller: _pageController,
-          onPageChanged: (int page) {
-            setState(
-              () {
-                _currentPage = page;
+        child: GetBuilder<GuideController>(
+          builder: (_) {
+            _.insertInitialData();
+            return PageView(
+              physics: ClampingScrollPhysics(),
+              controller: _.pageController,
+              onPageChanged: (int page) {
+                setState(
+                  () {
+                    _.currentPage = page;
+                  },
+                );
               },
+              children: [
+                OnBoardingDetailScreen(
+                  currentPage: _.currentPage,
+                ),
+                OnBoardingDetailScreen(
+                  currentPage: _.currentPage,
+                ),
+                OnBoardingDetailScreen(
+                  currentPage: _.currentPage,
+                ),
+                OnBoardingDetailScreen(
+                  currentPage: _.currentPage,
+                )
+              ],
             );
           },
-          children: [
-            OnBoardingDetailScreen(
-              currentPage: _currentPage,
-            ),
-            OnBoardingDetailScreen(
-              currentPage: _currentPage,
-            ),
-            OnBoardingDetailScreen(
-              currentPage: _currentPage,
-            ),
-            OnBoardingDetailScreen(
-              currentPage: _currentPage,
-            )
-          ],
         ),
       ),
     );

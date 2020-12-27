@@ -80,7 +80,7 @@ class _$NoticemeDatabase extends NoticemeDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `consumables` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `image` INTEGER, `category` TEXT, `duration` REAL)');
+            'CREATE TABLE IF NOT EXISTS `consumables` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `image` TEXT, `category` TEXT, `duration` REAL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -122,7 +122,7 @@ class _$ConsumableDao extends ConsumableDao {
         mapper: (Map<String, dynamic> row) => ConsumableEntity(
             row['id'] as int,
             row['title'] as String,
-            row['image'] as int,
+            row['image'] as String,
             row['category'] as String,
             row['duration'] as double));
   }

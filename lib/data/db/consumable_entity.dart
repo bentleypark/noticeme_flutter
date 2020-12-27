@@ -7,7 +7,7 @@ class ConsumableEntity {
 
   final String title;
 
-  final int image;
+  final String image;
 
   final String category;
 
