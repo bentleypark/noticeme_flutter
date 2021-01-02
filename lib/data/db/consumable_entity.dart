@@ -2,17 +2,14 @@ import 'package:floor/floor.dart';
 
 @Entity(tableName: 'consumables')
 class ConsumableEntity {
-  @PrimaryKey(autoGenerate: true)
-  final int id;
-
+  @PrimaryKey(autoGenerate: false)
   final String title;
 
   final String image;
 
   final String category;
 
-  final double duration;
+  final int duration;
 
-  ConsumableEntity(
-      this.id, this.title, this.image, this.category, this.duration);
+  ConsumableEntity(this.title, this.image, this.category, this.duration);
 }

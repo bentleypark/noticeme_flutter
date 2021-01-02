@@ -12,6 +12,6 @@ class GuideBinding extends Bindings {
     final dao = database.consumableDao;
 
     Get.lazyPut<GuideController>(() =>
-        GuideController(mainRepository: MainRepository(consumableDao: dao)));
+        GuideController());
   }
 }

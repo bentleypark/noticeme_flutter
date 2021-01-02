@@ -24,7 +24,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   void initState() {
     super.initState();
-    setCounterToSharedPrefs(true);
+    // setCounterToSharedPrefs(true);
   }
 
   @override
@@ -32,30 +32,30 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       body: Container(
         child: GetBuilder<GuideController>(
+          init: GuideController(),
           builder: (_) {
-            _.insertInitialData();
             return PageView(
               physics: ClampingScrollPhysics(),
-              controller: _.pageController,
+              controller: _pageController,
               onPageChanged: (int page) {
                 setState(
                   () {
-                    _.currentPage = page;
+                    _currentPage = page;
                   },
                 );
               },
               children: [
                 OnBoardingDetailScreen(
-                  currentPage: _.currentPage,
+                  currentPage: _currentPage,
                 ),
                 OnBoardingDetailScreen(
-                  currentPage: _.currentPage,
+                  currentPage: _currentPage,
                 ),
                 OnBoardingDetailScreen(
-                  currentPage: _.currentPage,
+                  currentPage: _currentPage,
                 ),
                 OnBoardingDetailScreen(
-                  currentPage: _.currentPage,
+                  currentPage: _currentPage,
                 )
               ],
             );

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:noticemeflutter/binding/guide_binding.dart';
 import 'package:noticemeflutter/ui/home/homescreen.dart';
-import 'package:noticemeflutter/ui/onboarding/guide_page.dart';
 import 'package:noticemeflutter/ui/onboarding/onboarding_screen.dart';
 import 'package:noticemeflutter/ui/splash/splash_screen.dart';
 import 'package:sqlite_viewer/sqlite_viewer.dart';
@@ -13,8 +12,8 @@ routes() => [
       ),
       GetPage(
           name: Routes.GUIDE,
-          page: () => GuidePage(),
-          binding: GuideBinding()),
+          page: () => OnBoardingScreen()),
+          // binding: GuideBinding()),
       GetPage(
         name: Routes.HOME,
         page: () => HomeScreen(),

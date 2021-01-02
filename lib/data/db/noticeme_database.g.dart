@@ -80,7 +80,7 @@ class _$NoticemeDatabase extends NoticemeDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `consumables` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `image` TEXT, `category` TEXT, `duration` REAL)');
+            'CREATE TABLE IF NOT EXISTS `consumables` (`title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, PRIMARY KEY (`title`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -101,7 +101,6 @@ class _$ConsumableDao extends ConsumableDao {
             database,
             'consumables',
             (ConsumableEntity item) => <String, dynamic>{
-                  'id': item.id,
                   'title': item.title,
                   'image': item.image,
                   'category': item.category,
@@ -120,11 +119,10 @@ class _$ConsumableDao extends ConsumableDao {
   Future<List<ConsumableEntity>> getAllConsumable() async {
     return _queryAdapter.queryList('SELECT * FROM consumables',
         mapper: (Map<String, dynamic> row) => ConsumableEntity(
-            row['id'] as int,
             row['title'] as String,
             row['image'] as String,
             row['category'] as String,
-            row['duration'] as double));
+            row['duration'] as int));
   }
 
   @override
