@@ -6,21 +6,15 @@ import 'package:noticemeflutter/data/db/noticeme_database.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 
 class GuideController extends GetxController {
-  GuideController() {
-    insertInitialData();
-  }
 
   List<ConsumableEntity> consumableList;
   NoticemeProvider provider = Get.put(NoticemeProvider());
 
   final PageController _pageController = PageController(initialPage: 0);
-
   get pageController => this._pageController;
 
   var _currentPage = 0.obs;
-
   get currentPage => this._currentPage.value;
-
   set currentPage(value) => this._currentPage.value = value;
 
   insertInitialData() async {

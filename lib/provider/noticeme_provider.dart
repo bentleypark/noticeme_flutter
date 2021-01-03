@@ -24,23 +24,6 @@ class NoticemeProvider {
     }
   }
 
-  String getCurrentGuideDotImage(int currentPage) {
-    switch (currentPage) {
-      case 0:
-        return 'images/guide_dot_1.svg';
-        break;
-      case 1:
-        return 'images/guide_dot_2.svg';
-        break;
-      case 2:
-        return 'images/guide_dot_3.svg';
-        break;
-      case 3:
-        return 'images/guide_dot_4.svg';
-        break;
-    }
-  }
-
   List<ConsumableEntity> getConsumableList() {
     List<ConsumableEntity> list = [
       ConsumableEntity('칫솔', 'images/img_toothbrush.png', '욕실', 7776000000),
