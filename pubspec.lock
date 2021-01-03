@@ -230,6 +230,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_simple_dependency_injection:
+    dependency: "direct main"
+    description:
+      name: flutter_simple_dependency_injection
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   flutter_svg:
     dependency: transitive
     description:
@@ -331,6 +338,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  json_table:
+    dependency: transitive
+    description:
+      name: json_table
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.0"
+  json_utilities:
+    dependency: transitive
+    description:
+      name: json_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   logger:
     dependency: "direct main"
     description:
@@ -644,6 +665,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.8"
+  sqlite_viewer:
+    dependency: "direct main"
+    description:
+      name: sqlite_viewer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   stack_trace:
     dependency: transitive
     description:

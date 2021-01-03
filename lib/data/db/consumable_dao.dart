@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:noticemeflutter/data/consumable_entity.dart';
+import 'package:noticemeflutter/data/db/consumable_entity.dart';
 
 @dao
 abstract class ConsumableDao {

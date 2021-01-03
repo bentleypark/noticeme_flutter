@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:noticemeflutter/controller/splash/SplashController.dart';
+import 'package:noticemeflutter/controller/splash/splash_controller.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 

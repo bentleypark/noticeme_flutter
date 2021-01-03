@@ -33,6 +33,8 @@ dependencies:
   logger:
   get:
   floor:
+  flutter_simple_dependency_injection:
+  sqlite_viewer:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -65,10 +67,6 @@ flutter:
 #    - images/guide_image2.png
 #    - images/guide_image3.png
 #    - images/guide_image4.png
-#    - images/guide_dot_1.svg
-#    - images/guide_dot_2.svg
-#    - images/guide_dot_3.svg
-#    - images/guide_dot_4.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
