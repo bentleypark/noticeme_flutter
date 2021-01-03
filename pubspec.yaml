@@ -35,6 +35,7 @@ dependencies:
   floor:
   flutter_simple_dependency_injection:
   sqlite_viewer:
+  flutter_statusbarcolor:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
