@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:noticemeflutter/binding/guide_binding.dart';
+import 'package:noticemeflutter/binding/home_biding.dart';
 import 'package:noticemeflutter/ui/home/homescreen.dart';
 import 'package:noticemeflutter/ui/onboarding/guide_screen.dart';
 import 'package:noticemeflutter/ui/splash/splash_screen.dart';
@@ -15,9 +16,7 @@ routes() => [
           page: () => GuideScreen(),
           binding: GuideBinding()),
       GetPage(
-        name: Routes.HOME,
-        page: () => HomeScreen(),
-      ),
+          name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding()),
       GetPage(
         name: Routes.DB,
         page: () => DatabaseList(),
