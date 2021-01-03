@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noticemeflutter/data/db/consumable_dao.dart';
 import 'package:noticemeflutter/data/db/consumable_entity.dart';
-import 'package:noticemeflutter/data/db/noticeme_database.dart';
 
 class NoticemeProvider {
   Color colorFromHex(String hexColor) {

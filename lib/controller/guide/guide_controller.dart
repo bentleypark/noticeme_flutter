@@ -35,7 +35,5 @@ class GuideController extends GetxController {
     consumableList.forEach((element) {
       dao.insertConsumable(element);
     });
-    // dao.insertConsumable(ConsumableEntity(
-    //     0, '칫솔', 'images/img_toothbrush.png', '욕실', 7776000000));
   }
 }
