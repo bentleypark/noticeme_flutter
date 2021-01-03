@@ -28,9 +28,10 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(top: 30, bottom: 10),
-          child: Container(
+        // Padding(
+        //   // padding: EdgeInsets.only(top: 30, bottom: 10),
+        //   child:
+          Container(
             height: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -42,15 +43,15 @@ class _OnBoardingDetailScreenState extends State<OnBoardingDetailScreen> {
               ),
             ), // fit: BoxFit.fill,
           ),
-        ),
-        Container(
-          alignment: Alignment(0.0, 0.92),
-          child: WebsafeSvg.asset(
-            provider.getCurrentGuideDotImage(widget.currentPage),
-            width: 260,
-            height: 4,
-          ),
-        ),
+        // ),
+        // Container(
+        //   alignment: Alignment(0.0, 0.92),
+        //   child: WebsafeSvg.asset(
+        //     provider.getCurrentGuideDotImage(widget.currentPage),
+        //     width: 260,
+        //     height: 4,
+        //   ),
+        // ),
         Visibility(
           visible: checkPage(),
           child: Container(
