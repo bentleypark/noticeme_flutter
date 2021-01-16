@@ -37,29 +37,30 @@ class DashHorizontalLine extends StatelessWidget {
               // ),
             ),
             Spacer(),
+            Text('소모품 리스트가 비었습니다.',style: TextStyle(color: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR), fontSize: 18),),
+            Spacer(),
             Padding(
-                padding: EdgeInsets.only(right: displayWidth(context) * 0.05),
-                child: Dash(
-                    direction: Axis.vertical,
-                    dashBorderRadius: 2,
-                    dashThickness: 3,
-                    length: 90,
-                    dashColor:
-                        provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR)),
-              ),
+              padding: EdgeInsets.only(right: displayWidth(context) * 0.05),
+              child: Dash(
+                  direction: Axis.vertical,
+                  dashBorderRadius: 2,
+                  dashThickness: 3,
+                  length: 90,
+                  dashColor:
+                      provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR)),
+            ),
           ],
         ),
         Align(
           alignment: Alignment.topCenter,
-          child:
-            Dash(
-              direction: Axis.horizontal,
-              dashBorderRadius: 2,
-              dashThickness: 3,
-              length: displayWidth(context) * 0.88,
-              dashColor: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
-            ),
+          child: Dash(
+            direction: Axis.horizontal,
+            dashBorderRadius: 2,
+            dashThickness: 3,
+            length: displayWidth(context) * 0.88,
+            dashColor: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
           ),
+        ),
       ],
     );
   }
