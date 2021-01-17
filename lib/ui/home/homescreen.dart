@@ -43,14 +43,28 @@ class HomeScreen extends GetView<HomeController> {
                       ? DashLineBox()
                       : Container(),
                 ),
-                Center(
-                    child: controller.isLoadingData
-                        ? CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(controller
-                                .colorFromHex(SPLASH_COLOR1)),
-                            strokeWidth: 3,
-                          )
-                        : Container())
+                Visibility(
+                  visible: controller.isLoadingData,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          controller.colorFromHex(SPLASH_COLOR1)),
+                      strokeWidth: 3,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 50),
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      child: Icon(Icons.add),
+                      backgroundColor: provider
+                          .colorFromHex(HOME_SCREEN_FLOATING_BUTTON_COLOR),
+                    ),
+                  ),
+                )
               ],
             );
           },
