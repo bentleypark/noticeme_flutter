@@ -47,16 +47,16 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
             ),
-            Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                onTap: () {
-                  print("onTap called.");
-                },
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 10.0),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: () {
+                      print("onTap called.");
+                    },
                     child: WebsafeSvg.asset(
                       'images/btn_setting.svg',
                       width: 45,
