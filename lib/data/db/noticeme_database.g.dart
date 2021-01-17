@@ -62,6 +62,8 @@ class _$NoticemeDatabase extends NoticemeDatabase {
 
   ConsumableDao _consumableDaoInstance;
 
+  UserConsumableDao _userConsumableDaoInstance;
+
   Future<sqflite.Database> open(String path, List<Migration> migrations,
       [Callback callback]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
@@ -81,6 +83,8 @@ class _$NoticemeDatabase extends NoticemeDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `consumables` (`title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, PRIMARY KEY (`title`))');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `userConsumables` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, `starDate` INTEGER, `endDate` INTEGER, `priority` INTEGER)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -91,6 +95,12 @@ class _$NoticemeDatabase extends NoticemeDatabase {
   @override
   ConsumableDao get consumableDao {
     return _consumableDaoInstance ??= _$ConsumableDao(database, changeListener);
+  }
+
+  @override
+  UserConsumableDao get userConsumableDao {
+    return _userConsumableDaoInstance ??=
+        _$UserConsumableDao(database, changeListener);
   }
 }
 
@@ -129,5 +139,53 @@ class _$ConsumableDao extends ConsumableDao {
   Future<void> insertConsumable(ConsumableEntity consumableEntity) async {
     await _consumableEntityInsertionAdapter.insert(
         consumableEntity, OnConflictStrategy.abort);
+  }
+}
+
+class _$UserConsumableDao extends UserConsumableDao {
+  _$UserConsumableDao(this.database, this.changeListener)
+      : _queryAdapter = QueryAdapter(database),
+        _userConsumableEntityInsertionAdapter = InsertionAdapter(
+            database,
+            'userConsumables',
+            (UserConsumableEntity item) => <String, dynamic>{
+                  'id': item.id,
+                  'title': item.title,
+                  'image': item.image,
+                  'category': item.category,
+                  'duration': item.duration,
+                  'starDate': item.starDate,
+                  'endDate': item.endDate,
+                  'priority': item.priority
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<UserConsumableEntity>
+      _userConsumableEntityInsertionAdapter;
+
+  @override
+  Future<List<UserConsumableEntity>> getAllConsumable() async {
+    return _queryAdapter.queryList('SELECT * FROM userConsumables',
+        mapper: (Map<String, dynamic> row) => UserConsumableEntity(
+            row['id'] as int,
+            row['title'] as String,
+            row['image'] as String,
+            row['category'] as String,
+            row['duration'] as int,
+            row['starDate'] as int,
+            row['endDate'] as int,
+            row['priority'] as int));
+  }
+
+  @override
+  Future<void> insertUserConsumable(
+      UserConsumableEntity userConsumableEntity) async {
+    await _userConsumableEntityInsertionAdapter.insert(
+        userConsumableEntity, OnConflictStrategy.abort);
   }
 }

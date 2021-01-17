@@ -6,6 +6,7 @@ import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/utils/routes.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
+// ignore: must_be_immutable
 class GuideDetailScreen extends StatelessWidget {
   final int currentPage;
 
