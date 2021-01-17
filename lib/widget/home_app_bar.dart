@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
+// ignore: must_be_immutable
 class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;

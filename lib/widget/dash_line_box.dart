@@ -5,7 +5,7 @@ import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 // ignore: must_be_immutable
-class DashHorizontalLine extends StatelessWidget {
+class DashLineBox extends StatelessWidget {
   NoticemeProvider provider = NoticemeProvider();
 
   @override

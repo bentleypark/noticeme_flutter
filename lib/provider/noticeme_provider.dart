@@ -7,6 +7,7 @@ class NoticemeProvider {
     return Color(int.parse('FF$hexCode', radix: 16));
   }
 
+  // ignore: missing_return
   String getCurrentGuideImage(int currentPage) {
     switch (currentPage) {
       case 0:
