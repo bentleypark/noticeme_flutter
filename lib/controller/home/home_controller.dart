@@ -26,8 +26,15 @@ class HomeController extends GetxController {
     var dao = database.userConsumableDao;
     var list = await dao.getAllConsumable();
 
-    if (list.isNotEmpty) {
-      return list;
+    var list2 = [
+      UserConsumableEntity(
+          0, '칫솔', 'images/img_toothbrush.png', '욕실', 7776000000, 0, 0, 0),
+      UserConsumableEntity(
+          0, '칫솔', 'images/img_toothbrush.png', '욕실', 7776000000, 0, 0, 0)
+    ];
+
+    if (list2.isNotEmpty) {
+      return list2;
     } else {
       return throw Exception('Failed to load data');
     }

@@ -8,6 +8,7 @@ import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
+import 'package:noticemeflutter/widget/userconsumable_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   NoticemeProvider provider = Get.put(NoticemeProvider());
@@ -43,11 +44,23 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         print(snapshot.hasData);
-                        return Container();
+                        return Padding(
+                          padding:
+                              EdgeInsets.only(top: 80, left: 10, right: 10),
+                          child: ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                child: UserConsumableTile(snapshot.data[index]),
+                              );
+                            },
+                          ),
+                        );
                       } else if (snapshot.hasError) {
                         return Padding(
-                            padding: EdgeInsets.only(top: 80),
-                            child: DashLineBox());
+                          padding: EdgeInsets.only(top: 80),
+                          child: DashLineBox(),
+                        );
                       }
                       return Center(
                         child: CircularProgressIndicator(
