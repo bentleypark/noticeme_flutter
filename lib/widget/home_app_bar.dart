@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
+import 'package:noticemeflutter/resources/colors.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 // ignore: must_be_immutable
@@ -27,7 +28,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: provider.colorFromHex('#abdfeb').withOpacity(0.5),
+              color: provider.colorFromHex(APP_BAR_SHADOW_COLOR).withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3), // changes position of shadow

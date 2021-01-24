@@ -6,6 +6,7 @@ import 'package:noticemeflutter/controller/home/home_controller.dart';
 import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
+import 'package:noticemeflutter/utils/routes.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
 import 'package:noticemeflutter/widget/userconsumable_tile.dart';
@@ -75,7 +76,9 @@ class HomeScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 50),
                     child: FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.CATEGORY);
+                      },
                       child: Icon(Icons.add),
                       backgroundColor: provider
                           .colorFromHex(HOME_SCREEN_FLOATING_BUTTON_COLOR),
