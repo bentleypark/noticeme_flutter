@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:get/get.dart';
 import 'package:noticemeflutter/controller/home/home_controller.dart';
+import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatelessWidget {
   NoticemeProvider provider = Get.put(NoticemeProvider());
 
   @override
@@ -20,7 +21,7 @@ class HomeScreen extends GetView<HomeController> {
       backgroundColor: provider.colorFromHex(HOME_SCREEN_BACKGROUND_COLOR),
       appBar: HomeAppBar(),
       body: Container(
-        child: GetX<HomeController>(
+        child: GetBuilder<HomeController>(
           builder: (controller) {
             return Stack(
               children: [
@@ -37,22 +38,25 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 80),
-                  child: controller.currentListLength == 0
-                      ? DashLineBox()
-                      : Container(),
-                ),
-                Visibility(
-                  visible: controller.isLoadingData,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                          controller.colorFromHex(SPLASH_COLOR1)),
-                      strokeWidth: 3,
-                    ),
-                  ),
-                ),
+                FutureBuilder<List<UserConsumableEntity>>(
+                    future: controller.getUserConsumableList(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.hasData);
+                        return Container();
+                      } else if (snapshot.hasError) {
+                        return Padding(
+                            padding: EdgeInsets.only(top: 80),
+                            child: DashLineBox());
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              controller.colorFromHex(SPLASH_COLOR1)),
+                          strokeWidth: 3,
+                        ),
+                      );
+                    }),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
