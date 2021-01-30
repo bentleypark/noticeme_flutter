@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
-import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 // ignore: must_be_immutable
 class DashLineBox extends StatelessWidget {
-  NoticemeProvider provider = NoticemeProvider();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +19,7 @@ class DashLineBox extends StatelessWidget {
                 dashBorderRadius: 2,
                 dashThickness: 3,
                 length: constraints.maxWidth * 0.9,
-                dashColor: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
+                dashColor: HOME_SCREEN_DOTTED_LINE_COLOR.parseColor(),
               ));
         }),
         Row(
@@ -36,8 +33,7 @@ class DashLineBox extends StatelessWidget {
                     dashBorderRadius: 2,
                     dashThickness: 3,
                     length: 85,
-                    dashColor:
-                        provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
+                    dashColor: HOME_SCREEN_DOTTED_LINE_COLOR.parseColor(),
                   ),
                 );
               },
@@ -46,7 +42,7 @@ class DashLineBox extends StatelessWidget {
             Text(
               '소모품 리스트가 비었습니다.',
               style: TextStyle(
-                  color: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
+                  color: HOME_SCREEN_DOTTED_LINE_COLOR.parseColor(),
                   fontSize: 18),
             ),
             Spacer(),
@@ -59,8 +55,7 @@ class DashLineBox extends StatelessWidget {
                     dashBorderRadius: 2,
                     dashThickness: 3,
                     length: 85,
-                    dashColor:
-                        provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
+                    dashColor: HOME_SCREEN_DOTTED_LINE_COLOR.parseColor(),
                   ),
                 );
               },
@@ -76,7 +71,7 @@ class DashLineBox extends StatelessWidget {
                 dashBorderRadius: 2,
                 dashThickness: 3,
                 length: constraints.maxWidth * 0.9,
-                dashColor: provider.colorFromHex(HOME_SCREEN_DOTTED_LINE_COLOR),
+                dashColor: HOME_SCREEN_DOTTED_LINE_COLOR.parseColor(),
               );
             },
           ),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
+import 'package:noticemeflutter/utils/routes.dart';
 import 'package:websafe_svg/websafe_svg.dart';
+import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class CategoryAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
-
-  NoticemeProvider provider = Get.put(NoticemeProvider());
 
   CategoryAppBar()
       : preferredSize = Size.fromHeight(80.0),
@@ -27,8 +26,7 @@ class CategoryAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color:
-                  provider.colorFromHex(APP_BAR_SHADOW_COLOR).withOpacity(0.5),
+              color: APP_BAR_SHADOW_COLOR.parseColor().withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3), // changes position of shadow
@@ -44,7 +42,7 @@ class CategoryAppBar extends StatelessWidget with PreferredSizeWidget {
                 type: MaterialType.transparency,
                 child: InkWell(
                   onTap: () {
-                    print("onTap called.");
+                    Get.offNamed(Routes.HOME);
                   },
                   child: WebsafeSvg.asset(
                     'images/arrow_back.svg',
@@ -59,8 +57,9 @@ class CategoryAppBar extends StatelessWidget with PreferredSizeWidget {
           Text(
             '카테고리',
             style: TextStyle(
-                fontSize: 20,
-                color: provider.colorFromHex(APP_BAR_TITLE_COLOR)),
+              fontSize: 20,
+              color: APP_BAR_TITLE_COLOR.parseColor(),
+            ),
           ),
           Spacer(),
           Align(

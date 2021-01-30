@@ -10,17 +10,17 @@ import 'package:noticemeflutter/utils/routes.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
 import 'package:noticemeflutter/widget/userconsumable_tile.dart';
+import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class HomeScreen extends StatelessWidget {
   NoticemeProvider provider = Get.put(NoticemeProvider());
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(
-        provider.colorFromHex(STATUS_BAR_COLOR));
+    FlutterStatusbarcolor.setStatusBarColor(STATUS_BAR_COLOR.parseColor());
 
     return Scaffold(
-      backgroundColor: provider.colorFromHex(HOME_SCREEN_BACKGROUND_COLOR),
+      backgroundColor: HOME_SCREEN_BACKGROUND_COLOR.parseColor(),
       appBar: HomeAppBar(),
       body: Container(
         child: GetBuilder<HomeController>(
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       '다음 교체',
                       style: TextStyle(
-                          color: provider.colorFromHex(HOME_SCREEN_TEXT_COLOR),
+                          color: HOME_SCREEN_TEXT_COLOR.parseColor(),
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                     ),
@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                       return Center(
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
-                              controller.colorFromHex(SPLASH_COLOR1)),
+                              SPLASH_COLOR1.parseColor()),
                           strokeWidth: 3,
                         ),
                       );
@@ -80,8 +80,8 @@ class HomeScreen extends StatelessWidget {
                         Get.toNamed(Routes.CATEGORY);
                       },
                       child: Icon(Icons.add),
-                      backgroundColor: provider
-                          .colorFromHex(HOME_SCREEN_FLOATING_BUTTON_COLOR),
+                      backgroundColor:
+                          HOME_SCREEN_FLOATING_BUTTON_COLOR.parseColor(),
                     ),
                   ),
                 )

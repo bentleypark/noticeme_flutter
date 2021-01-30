@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:noticemeflutter/controller/guide/guide_detail_controller.dart';
-import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/utils/routes.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 // ignore: must_be_immutable
 class GuideDetailScreen extends StatelessWidget {
   final int currentPage;
-
-  NoticemeProvider provider = Get.put(NoticemeProvider());
 
   GuideDetailScreen({this.currentPage});
 

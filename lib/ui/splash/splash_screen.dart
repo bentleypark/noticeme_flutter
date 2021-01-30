@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:noticemeflutter/controller/splash/splash_controller.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:websafe_svg/websafe_svg.dart';
+import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -19,9 +20,9 @@ class SplashScreen extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      controller.colorFromHex(SPLASH_COLOR1),
-                      controller.colorFromHex(SPLASH_COLOR1),
-                      controller.colorFromHex(SPLASH_COLOR2)
+                      SPLASH_COLOR1.parseColor(),
+                      SPLASH_COLOR1.parseColor(),
+                      SPLASH_COLOR2.parseColor()
                     ],
                   ),
                 ),
