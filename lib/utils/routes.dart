@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:noticemeflutter/binding/category_detail_binding.dart';
 import 'package:noticemeflutter/binding/guide_binding.dart';
 import 'package:noticemeflutter/binding/home_biding.dart';
+import 'package:noticemeflutter/ui/category/category_detail_screen.dart';
 import 'package:noticemeflutter/ui/category/category_screen.dart';
 import 'package:noticemeflutter/ui/home/homescreen.dart';
 import 'package:noticemeflutter/ui/onboarding/guide_screen.dart';
@@ -25,7 +27,11 @@ routes() => [
       GetPage(
         name: Routes.CATEGORY,
         page: () => CategoryScreen(),
-      )
+      ),
+      GetPage(
+          name: Routes.CATEGORY_DETAIL,
+          page: () => CategoryDetailScreen(),
+          binding: CategoryDetailBinding())
     ];
 
 abstract class Routes {
@@ -33,5 +39,6 @@ abstract class Routes {
   static const GUIDE = '/guide';
   static const HOME = '/home';
   static const CATEGORY = '/category';
+  static const CATEGORY_DETAIL = '/category_detail';
   static const DB = '/db';
 }

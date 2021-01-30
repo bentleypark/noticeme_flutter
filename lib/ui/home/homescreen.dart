@@ -4,7 +4,6 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:get/get.dart';
 import 'package:noticemeflutter/controller/home/home_controller.dart';
 import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
-import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/utils/routes.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
@@ -13,7 +12,6 @@ import 'package:noticemeflutter/widget/userconsumable_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class HomeScreen extends StatelessWidget {
-  NoticemeProvider provider = Get.put(NoticemeProvider());
 
   @override
   Widget build(BuildContext context) {
