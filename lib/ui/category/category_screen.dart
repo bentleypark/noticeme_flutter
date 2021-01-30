@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/ui/category/category.dart';
-import 'package:noticemeflutter/utils/routes.dart';
 import 'package:noticemeflutter/widget/category_app_bar.dart';
 import 'package:noticemeflutter/widget/category_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';

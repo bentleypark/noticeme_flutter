@@ -8,4 +8,7 @@ abstract class ConsumableDao {
 
   @insert
   Future<void> insertConsumable(ConsumableEntity consumableEntity);
+
+  @Query('SELECT * FROM consumables WHERE category = :category')
+  Future<List<ConsumableEntity>> fetchConsumableByCategory(String category);
 }

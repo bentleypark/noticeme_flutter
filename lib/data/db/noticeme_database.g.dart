@@ -136,6 +136,19 @@ class _$ConsumableDao extends ConsumableDao {
   }
 
   @override
+  Future<List<ConsumableEntity>> fetchConsumableByCategory(
+      String category) async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM consumables WHERE category = ?',
+        arguments: <dynamic>[category],
+        mapper: (Map<String, dynamic> row) => ConsumableEntity(
+            row['title'] as String,
+            row['image'] as String,
+            row['category'] as String,
+            row['duration'] as int));
+  }
+
+  @override
   Future<void> insertConsumable(ConsumableEntity consumableEntity) async {
     await _consumableEntityInsertionAdapter.insert(
         consumableEntity, OnConflictStrategy.abort);

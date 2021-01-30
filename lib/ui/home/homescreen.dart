@@ -8,11 +8,11 @@ import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/utils/routes.dart';
 import 'package:noticemeflutter/widget/home_app_bar.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
+import 'package:noticemeflutter/widget/upper_text_widget.dart';
 import 'package:noticemeflutter/widget/userconsumable_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class HomeScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(STATUS_BAR_COLOR.parseColor());
@@ -25,19 +25,7 @@ class HomeScreen extends StatelessWidget {
           builder: (controller) {
             return Stack(
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 100, 0),
-                    child: Text(
-                      '다음 교체',
-                      style: TextStyle(
-                          color: HOME_SCREEN_TEXT_COLOR.parseColor(),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                  ),
-                ),
+                UpperTextWidget(),
                 FutureBuilder<List<UserConsumableEntity>>(
                     future: controller.getUserConsumableList(),
                     builder: (context, snapshot) {

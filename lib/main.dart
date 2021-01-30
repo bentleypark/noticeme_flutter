@@ -4,17 +4,17 @@ import 'package:noticemeflutter/getit.dart';
 import 'package:noticemeflutter/provider/noticeme_provider.dart';
 import 'package:noticemeflutter/resources/strings.dart';
 import 'package:noticemeflutter/utils/routes.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 Future<void> main() async {
   setup();
+  runApp(MyApp());
+  // await SentryFlutter.init(
+  //   (options) {
+  //     options.dsn = SENTRY_DNS;
+  //   },
+  //   appRunner: () => runApp(MyApp()),
+  // );
 
-  await SentryFlutter.init(
-    (options) {
-      options.dsn = SENTRY_DNS;
-    },
-    appRunner: () => runApp(MyApp()),
-  );
 }
 
 class MyApp extends StatelessWidget {
