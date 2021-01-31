@@ -38,6 +38,7 @@ dependencies:
   flutter_statusbarcolor:
   flutter_dash:
   flutter_holo_date_picker:
+  flutter_local_notifications:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -6,6 +6,7 @@ import 'package:noticemeflutter/ui/add/add_custom_consumable_controller.dart';
 import 'package:noticemeflutter/widget/add_custom_consumable_app_bar.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 import 'package:noticemeflutter/widget/noticeme_text_widget.dart';
+import 'package:noticemeflutter/widget/toggle_button_group_widget.dart';
 
 class AddCustomConsumableScreen extends StatelessWidget {
   @override
@@ -102,6 +103,15 @@ class AddCustomConsumableScreen extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: TextWidget('우선 순위를 선택해주세요!'),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: 10,
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: ToggleButtonGroup(),
                         ),
                       ),
                     ],
