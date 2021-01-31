@@ -84,7 +84,7 @@ class _$NoticemeDatabase extends NoticemeDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `consumables` (`title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, PRIMARY KEY (`title`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `userConsumables` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, `starDate` INTEGER, `endDate` INTEGER, `priority` INTEGER)');
+            'CREATE TABLE IF NOT EXISTS `userConsumables` (`title` TEXT, `image` TEXT, `category` TEXT, `duration` INTEGER, `starDate` INTEGER, `endDate` INTEGER, `priority` INTEGER, PRIMARY KEY (`title`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -136,6 +136,19 @@ class _$ConsumableDao extends ConsumableDao {
   }
 
   @override
+  Future<List<ConsumableEntity>> fetchConsumableByCategory(
+      String category) async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM consumables WHERE category = ?',
+        arguments: <dynamic>[category],
+        mapper: (Map<String, dynamic> row) => ConsumableEntity(
+            row['title'] as String,
+            row['image'] as String,
+            row['category'] as String,
+            row['duration'] as int));
+  }
+
+  @override
   Future<void> insertConsumable(ConsumableEntity consumableEntity) async {
     await _consumableEntityInsertionAdapter.insert(
         consumableEntity, OnConflictStrategy.abort);
@@ -149,7 +162,6 @@ class _$UserConsumableDao extends UserConsumableDao {
             database,
             'userConsumables',
             (UserConsumableEntity item) => <String, dynamic>{
-                  'id': item.id,
                   'title': item.title,
                   'image': item.image,
                   'category': item.category,
@@ -172,7 +184,6 @@ class _$UserConsumableDao extends UserConsumableDao {
   Future<List<UserConsumableEntity>> getAllConsumable() async {
     return _queryAdapter.queryList('SELECT * FROM userConsumables',
         mapper: (Map<String, dynamic> row) => UserConsumableEntity(
-            row['id'] as int,
             row['title'] as String,
             row['image'] as String,
             row['category'] as String,

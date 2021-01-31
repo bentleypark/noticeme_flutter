@@ -2,23 +2,31 @@ import 'package:floor/floor.dart';
 
 @Entity(tableName: 'userConsumables')
 class UserConsumableEntity {
-  @PrimaryKey(autoGenerate: true)
-  final int id;
+  // int id = 0;
+  @PrimaryKey(autoGenerate: false)
+  String title;
 
-  final String title;
+  String image;
 
-  final String image;
+  String category;
 
-  final String category;
+  int duration;
 
-  final int duration;
+  int starDate;
 
-  final int starDate;
+  int endDate;
 
-  final int endDate;
+  int priority = 0;
 
-  final int priority;
+  UserConsumableEntity(this.title, this.image, this.category, this.duration,
+      this.starDate, this.endDate, this.priority);
 
-  UserConsumableEntity(this.id, this.title, this.image, this.category,
-      this.duration, this.starDate, this.endDate, this.priority);
+  UserConsumableEntity.withoutIdAndPriority(
+    this.title,
+    this.image,
+    this.category,
+    this.duration,
+    this.starDate,
+    this.endDate,
+  );
 }

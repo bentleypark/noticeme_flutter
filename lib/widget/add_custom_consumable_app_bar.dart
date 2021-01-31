@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:noticemeflutter/resources/colors.dart';
-import 'package:noticemeflutter/utils/ex_fucs.dart';
+import 'package:noticemeflutter/utils/routes.dart';
 import 'package:websafe_svg/websafe_svg.dart';
+import 'package:noticemeflutter/utils/ex_fucs.dart';
 
-// ignore: must_be_immutable
-class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
+import 'noticeme_text_widget.dart';
+
+class AddCustomConsumableAppBar extends StatelessWidget
+    with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  HomeAppBar()
+  AddCustomConsumableAppBar()
       : preferredSize = Size.fromHeight(80.0),
         super();
 
@@ -37,11 +41,29 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: WebsafeSvg.asset(
-                  'images/main_logo.svg',
-                  width: 150,
-                  height: 25,
+                padding: EdgeInsets.only(left: 16.0),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: () {
+                      Get.offNamed(Routes.CATEGORY);
+                    },
+                    child: WebsafeSvg.asset(
+                      'images/arrow_back.svg',
+                      width: 25,
+                      height: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                '직접 추가',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: APP_BAR_TITLE_COLOR.parseColor(),
                 ),
               ),
             ),
@@ -55,11 +77,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
                     onTap: () {
                       print("onTap called.");
                     },
-                    child: WebsafeSvg.asset(
-                      'images/btn_setting.svg',
-                      width: 45,
-                      height: 45,
-                    ),
+                    child: TextWidget('확인'),
                   ),
                 ),
               ),
