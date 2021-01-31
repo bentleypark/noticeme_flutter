@@ -13,9 +13,13 @@ import 'package:noticemeflutter/widget/userconsumable_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class HomeScreen extends StatelessWidget {
+  BuildContext context;
+
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(STATUS_BAR_COLOR.parseColor());
+
+    this.context = context;
 
     return Scaffold(
       backgroundColor: HOME_SCREEN_BACKGROUND_COLOR.parseColor(),

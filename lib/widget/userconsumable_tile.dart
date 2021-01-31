@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
+import 'package:noticemeflutter/resources/const.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class UserConsumableTile extends StatelessWidget {
@@ -18,12 +19,28 @@ class UserConsumableTile extends StatelessWidget {
           children: [
             Text(userConsumableEntity.title),
             Spacer(),
-            Text(
-              userConsumableEntity.duration.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            showExpiredDay()
           ],
         ),
         trailing: Icon(Icons.keyboard_arrow_right));
+  }
+
+  double convertStartDate() {
+    var current = DateTime.now().millisecondsSinceEpoch;
+    return ((userConsumableEntity.endDate - current) / ONE_DAY_MILLISECONDS);
+  }
+
+  Widget showExpiredDay() {
+    var result = convertStartDate();
+    if (result > 0) {
+      return Text('-' + convertStartDate().toStringAsFixed(0) + '일',
+          style: TextStyle(fontWeight: FontWeight.bold));
+    } else if (result == 0) {
+      return Text('D-Day',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red));
+    } else if (result < 0) {
+      return Text('+' + convertStartDate().toStringAsFixed(0) + '일',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red));
+    }
   }
 }
