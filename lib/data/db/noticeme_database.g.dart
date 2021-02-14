@@ -169,6 +169,32 @@ class _$UserConsumableDao extends UserConsumableDao {
                   'starDate': item.starDate,
                   'endDate': item.endDate,
                   'priority': item.priority
+                }),
+        _userConsumableEntityUpdateAdapter = UpdateAdapter(
+            database,
+            'userConsumables',
+            ['title'],
+            (UserConsumableEntity item) => <String, dynamic>{
+                  'title': item.title,
+                  'image': item.image,
+                  'category': item.category,
+                  'duration': item.duration,
+                  'starDate': item.starDate,
+                  'endDate': item.endDate,
+                  'priority': item.priority
+                }),
+        _userConsumableEntityDeletionAdapter = DeletionAdapter(
+            database,
+            'userConsumables',
+            ['title'],
+            (UserConsumableEntity item) => <String, dynamic>{
+                  'title': item.title,
+                  'image': item.image,
+                  'category': item.category,
+                  'duration': item.duration,
+                  'starDate': item.starDate,
+                  'endDate': item.endDate,
+                  'priority': item.priority
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -179,6 +205,11 @@ class _$UserConsumableDao extends UserConsumableDao {
 
   final InsertionAdapter<UserConsumableEntity>
       _userConsumableEntityInsertionAdapter;
+
+  final UpdateAdapter<UserConsumableEntity> _userConsumableEntityUpdateAdapter;
+
+  final DeletionAdapter<UserConsumableEntity>
+      _userConsumableEntityDeletionAdapter;
 
   @override
   Future<List<UserConsumableEntity>> getAllConsumable() async {
@@ -198,5 +229,18 @@ class _$UserConsumableDao extends UserConsumableDao {
       UserConsumableEntity userConsumableEntity) async {
     await _userConsumableEntityInsertionAdapter.insert(
         userConsumableEntity, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> updateUserConsumable(
+      UserConsumableEntity userConsumableEntity) async {
+    await _userConsumableEntityUpdateAdapter.update(
+        userConsumableEntity, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> deleteUserConsumable(
+      UserConsumableEntity userConsumableEntity) async {
+    await _userConsumableEntityDeletionAdapter.delete(userConsumableEntity);
   }
 }

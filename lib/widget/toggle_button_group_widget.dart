@@ -7,10 +7,25 @@ class ToggleButtonGroup extends StatefulWidget {
 
   @override
   _ToggleButtonGroupState createState() => _ToggleButtonGroupState();
+
+
+  int getSelectedIndex() {
+    return this.isSelected.indexOf(true);
+  }
+
+  void setSelectedIndex(int index) {
+    for (int indexBtn = 0; indexBtn < this.isSelected.length; indexBtn++) {
+      if (indexBtn == index) {
+        this.isSelected[indexBtn] = true;
+      } else {
+        this.isSelected[indexBtn] = false;
+      }
+    }
+  }
+
 }
 
 class _ToggleButtonGroupState extends State<ToggleButtonGroup> {
-  // List<bool> isSelected = [false, false, false, true];
   FocusNode focusNodeButton1 = FocusNode();
   FocusNode focusNodeButton2 = FocusNode();
   FocusNode focusNodeButton3 = FocusNode();
@@ -75,25 +90,28 @@ class _ToggleButtonGroupState extends State<ToggleButtonGroup> {
           fillColor: HOME_SCREEN_FLOATING_BUTTON_COLOR.parseColor(),
           onPressed: (int index) {
             setState(() {
-              for (int indexBtn = 0; indexBtn < widget.isSelected.length; indexBtn++) {
-                if (indexBtn == index) {
-                  widget.isSelected[indexBtn] = true;
-                } else {
-                  widget.isSelected[indexBtn] = false;
-                }
-              }
+              widget.setSelectedIndex(index);
             });
           }),
     );
   }
 
-  int getSelectedIndex() {
-    return widget.isSelected.indexOf(true);
-  }
 }
 
-extension SelectedIndex on ToggleButtonGroup {
-  int getSelectedIndex() {
-    return this.isSelected.indexOf(true);
-  }
-}
+// extension SelectedIndex on ToggleButtonGroup {
+//   int getSelectedIndex() {
+//     return this.isSelected.indexOf(true);
+//   }
+// }
+
+// extension SetSelectedIndex on ToggleButtonGroup {
+//   void setSelectedIndex(int index) {
+//     for (int indexBtn = 0; indexBtn < this.isSelected.length; indexBtn++) {
+//       if (indexBtn == index) {
+//         this.isSelected[indexBtn] = true;
+//       } else {
+//         this.isSelected[indexBtn] = false;
+//       }
+//     }
+//   }
+// }

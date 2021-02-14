@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
 import 'package:noticemeflutter/resources/const.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
+import 'package:noticemeflutter/utils/routes.dart';
 
 class UserConsumableTile extends StatelessWidget {
   UserConsumableTile(this.userConsumableEntity);
@@ -11,18 +13,22 @@ class UserConsumableTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        contentPadding: EdgeInsets.all(10),
-        leading: SizedBox(
-            height: displayWidth(context) * 0.4,
-            child: Image.asset(userConsumableEntity.image)),
-        title: Row(
-          children: [
-            Text(userConsumableEntity.title),
-            Spacer(),
-            showExpiredDay()
-          ],
-        ),
-        trailing: Icon(Icons.keyboard_arrow_right));
+      contentPadding: EdgeInsets.all(10),
+      leading: SizedBox(
+          height: displayWidth(context) * 0.4,
+          child: Image.asset(userConsumableEntity.image)),
+      title: Row(
+        children: [
+          Text(userConsumableEntity.title),
+          Spacer(),
+          showExpiredDay()
+        ],
+      ),
+      trailing: Icon(Icons.keyboard_arrow_right),
+      onTap: () {
+        Get.offNamed(Routes.DETAIL, arguments: userConsumableEntity);
+      },
+    );
   }
 
   double convertStartDate() {
@@ -39,7 +45,7 @@ class UserConsumableTile extends StatelessWidget {
       return Text('D-Day',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red));
     } else if (result < 0) {
-      return Text('+' + convertStartDate().toStringAsFixed(0) + '일',
+      return Text('+' + convertStartDate().toStringAsFixed(0).substring(1) + '일',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red));
     }
   }

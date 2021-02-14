@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:noticemeflutter/binding/add_custom_consumable_binding.dart';
 import 'package:noticemeflutter/binding/category_detail_binding.dart';
+import 'package:noticemeflutter/binding/detail_binding.dart';
 import 'package:noticemeflutter/binding/guide_binding.dart';
 import 'package:noticemeflutter/binding/home_biding.dart';
 import 'package:noticemeflutter/ui/add/add_cutom_consumable_screen.dart';
 import 'package:noticemeflutter/ui/category/category_detail_screen.dart';
 import 'package:noticemeflutter/ui/category/category_screen.dart';
+import 'package:noticemeflutter/ui/detail/detail_screen.dart';
 import 'package:noticemeflutter/ui/home/homescreen.dart';
 import 'package:noticemeflutter/ui/onboarding/guide_screen.dart';
 import 'package:noticemeflutter/ui/splash/splash_screen.dart';
@@ -37,7 +39,11 @@ routes() => [
       GetPage(
           name: Routes.ADD_CUSTOM,
           page: () => AddCustomConsumableScreen(),
-          binding: AddCustomConsumableBinding())
+          binding: AddCustomConsumableBinding()),
+      GetPage(
+          name: Routes.DETAIL,
+          page: () => DetailScreen(),
+          binding: DetailBinding())
     ];
 
 abstract class Routes {
@@ -47,5 +53,6 @@ abstract class Routes {
   static const CATEGORY = '/category';
   static const CATEGORY_DETAIL = '/category_detail';
   static const ADD_CUSTOM = '/add_custom';
+  static const DETAIL = '/detail';
   static const DB = '/db';
 }

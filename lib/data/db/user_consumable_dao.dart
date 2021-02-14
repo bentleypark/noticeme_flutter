@@ -8,4 +8,10 @@ abstract class UserConsumableDao {
 
   @insert
   Future<void> insertUserConsumable(UserConsumableEntity userConsumableEntity);
+
+  @delete
+  Future<void> deleteUserConsumable(UserConsumableEntity userConsumableEntity);
+
+  @update
+  Future<void> updateUserConsumable(UserConsumableEntity userConsumableEntity);
 }

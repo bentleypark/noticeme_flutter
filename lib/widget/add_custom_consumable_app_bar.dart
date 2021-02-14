@@ -10,7 +10,10 @@ class AddCustomConsumableAppBar extends StatelessWidget
   @override
   final Size preferredSize;
 
-  AddCustomConsumableAppBar()
+  String from;
+  Widget button;
+
+  AddCustomConsumableAppBar({@required this.from, this.button})
       : preferredSize = Size.fromHeight(80.0),
         super();
 
@@ -44,7 +47,11 @@ class AddCustomConsumableAppBar extends StatelessWidget
                   type: MaterialType.transparency,
                   child: InkWell(
                     onTap: () {
-                      Get.offNamed(Routes.CATEGORY);
+                      if (from == 'AddCustomConsumableScreen') {
+                        Get.offNamed(Routes.CATEGORY);
+                      } else {
+                        Get.offNamed(Routes.HOME);
+                      }
                     },
                     child: WebsafeSvg.asset(
                       'images/arrow_back.svg',
@@ -58,16 +65,36 @@ class AddCustomConsumableAppBar extends StatelessWidget
             Align(
               alignment: Alignment.center,
               child: Text(
-                '직접 추가',
+                getAppBarTitle(),
                 style: TextStyle(
                   fontSize: 20,
                   color: APP_BAR_TITLE_COLOR.parseColor(),
                 ),
               ),
             ),
+            Visibility(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  right: 30,
+                ),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: button,
+                ),
+              ),
+              visible: button != null,
+            )
           ],
         ),
       ),
     );
+  }
+
+  String getAppBarTitle() {
+    if (from == 'AddCustomConsumableScreen') {
+      return '직접 추가';
+    } else {
+      return '소모품 수정';
+    }
   }
 }

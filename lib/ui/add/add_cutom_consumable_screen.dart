@@ -17,13 +17,31 @@ class AddCustomConsumableScreen extends StatelessWidget {
   final titleController = TextEditingController();
   final durationController = TextEditingController();
   NoticemeProvider provider = Get.put(NoticemeProvider());
-  var current = DateTime.now().millisecondsSinceEpoch;
   ToggleButtonGroup toggleButtonGroup = ToggleButtonGroup();
+  DateTime _selectedDate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AddCustomConsumableAppBar(),
+      appBar: AddCustomConsumableAppBar(
+        from: 'AddCustomConsumableScreen',
+        button: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+              child: TextWidget('추가'),
+              onTap: () {
+            insert();
+            // final snackBar = SnackBar(
+            //   content: Text('소모품이 추가되었습니다!'),
+            // );
+            // Scaffold.of(context).showSnackBar(snackBar);
+
+            Future.delayed(const Duration(seconds: 2), () {
+              Get.offNamed(Routes.HOME);
+            });
+          }),
+        ),
+      ),
       backgroundColor: HOME_SCREEN_BACKGROUND_COLOR.parseColor(),
       body: Container(
         child: GetBuilder<AddCustomConsumableController>(builder: (controller) {
@@ -105,6 +123,9 @@ class AddCustomConsumableScreen extends StatelessWidget {
                               dividerColor:
                                   DATE_PICKER_DIVIDER_COLOR.parseColor(),
                               backgroundColor: Colors.transparent),
+                          onChange: (DateTime newDate, _) {
+                            _selectedDate = newDate;
+                          },
                         ),
                       ),
                     ),
@@ -126,35 +147,35 @@ class AddCustomConsumableScreen extends StatelessWidget {
                         child: toggleButtonGroup,
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10, top: 30),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: RaisedButton(
-                            color: HOME_SCREEN_TEXT_COLOR.parseColor(),
-                            child: Text(
-                              '추가하기',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                            onPressed: () {
-                              insert();
-                              final snackBar = SnackBar(
-                                content: Text('소모품이 추가되었습니다!'),
-                              );
-                              Scaffold.of(context).showSnackBar(snackBar);
-
-                              Future.delayed(const Duration(seconds: 2), () {
-                                Get.offNamed(Routes.HOME);
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.center,
+                    //   child: Padding(
+                    //     padding: EdgeInsets.only(left: 10, right: 10, top: 30),
+                    //     child: SizedBox(
+                    //       width: double.infinity,
+                    //       height: 50,
+                    //       child: RaisedButton(
+                    //         color: HOME_SCREEN_TEXT_COLOR.parseColor(),
+                    //         child: Text(
+                    //           '추가하기',
+                    //           style:
+                    //               TextStyle(fontSize: 20, color: Colors.white),
+                    //         ),
+                    //         onPressed: () {
+                    //           insert();
+                    //           final snackBar = SnackBar(
+                    //             content: Text('소모품이 추가되었습니다!'),
+                    //           );
+                    //           Scaffold.of(context).showSnackBar(snackBar);
+                    //
+                    //           Future.delayed(const Duration(seconds: 2), () {
+                    //             Get.offNamed(Routes.HOME);
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -172,13 +193,18 @@ class AddCustomConsumableScreen extends StatelessWidget {
     var dao = database.userConsumableDao;
     var consumableDao = database.consumableDao;
 
+    if (_selectedDate == null) {
+      _selectedDate = DateTime.now();
+    }
+
+    var selectedDateMilliseconds = _selectedDate.millisecondsSinceEpoch;
     dao.insertUserConsumable(UserConsumableEntity(
         titleController.text,
         provider.fetchRandomImage(),
         '나의 목록',
         durationController.text.convertDuration(),
-        current,
-        current + durationController.text.convertDuration(),
+        selectedDateMilliseconds,
+        selectedDateMilliseconds + durationController.text.convertDuration(),
         toggleButtonGroup.getSelectedIndex()));
 
     consumableDao.insertConsumable(ConsumableEntity(

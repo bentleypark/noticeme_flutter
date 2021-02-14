@@ -13,3 +13,4 @@ const APP_BAR_TITLE_COLOR = '#ababab';
 const TEXT_FIELD_BORDER_COLOR = '#40ababab';
 const TEXT_FILED_HINT_COLOR = '#d4d4d4';
 const DATE_PICKER_DIVIDER_COLOR = '#828282';
+const DETAIL_TEXT_COLOR ='#505050';
