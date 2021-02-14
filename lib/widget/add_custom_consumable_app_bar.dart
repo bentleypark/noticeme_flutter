@@ -5,8 +5,6 @@ import 'package:noticemeflutter/utils/routes.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
-import 'noticeme_text_widget.dart';
-
 class AddCustomConsumableAppBar extends StatelessWidget
     with PreferredSizeWidget {
   @override
@@ -64,21 +62,6 @@ class AddCustomConsumableAppBar extends StatelessWidget
                 style: TextStyle(
                   fontSize: 20,
                   color: APP_BAR_TITLE_COLOR.parseColor(),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: InkWell(
-                    onTap: () {
-                      print("onTap called.");
-                    },
-                    child: TextWidget('확인'),
-                  ),
                 ),
               ),
             ),

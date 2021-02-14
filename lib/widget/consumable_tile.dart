@@ -52,8 +52,6 @@ class ConsumableTile extends StatelessWidget {
     var dao = database.userConsumableDao;
     var current = DateTime.now().millisecondsSinceEpoch;
 
-    print(current);
-
     dao.insertUserConsumable(UserConsumableEntity.withoutIdAndPriority(
         consumableEntity.title,
         consumableEntity.image,

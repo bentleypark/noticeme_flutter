@@ -50,4 +50,21 @@ class NoticemeProvider {
     ];
     return list;
   }
+
+  String fetchRandomImage() {
+    List<String> list = [
+      'images/random_icon_1_alien_1.png',
+      'images/random_icon_2_cake.png',
+      'images/random_icon_3_donut.png',
+      'images/random_icon_4_flower_1.png',
+      'images/random_icon_5_alien_2.png',
+      'images/random_icon_6_flower_2.png',
+      'images/random_icon_7_flower_3.png',
+      'images/random_icon_8_smile.png',
+      'images/random_icon_9_heart.png',
+      'images/random_icon_10_planet.png'
+    ];
+    list.shuffle();
+    return list[0];
+  }
 }

@@ -3,12 +3,14 @@ import 'package:noticemeflutter/resources/colors.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
 class ToggleButtonGroup extends StatefulWidget {
+  List<bool> isSelected = [false, false, false, true];
+
   @override
   _ToggleButtonGroupState createState() => _ToggleButtonGroupState();
 }
 
 class _ToggleButtonGroupState extends State<ToggleButtonGroup> {
-  List<bool> isSelected = [false, false, false, true];
+  // List<bool> isSelected = [false, false, false, true];
   FocusNode focusNodeButton1 = FocusNode();
   FocusNode focusNodeButton2 = FocusNode();
   FocusNode focusNodeButton3 = FocusNode();
@@ -40,7 +42,7 @@ class _ToggleButtonGroupState extends State<ToggleButtonGroup> {
     return Center(
       child: ToggleButtons(
           borderRadius: BorderRadius.circular(7),
-          isSelected: isSelected,
+          isSelected: widget.isSelected,
           children: [
             SizedBox(
               width: displayWidth(context) * 0.15,
@@ -73,15 +75,25 @@ class _ToggleButtonGroupState extends State<ToggleButtonGroup> {
           fillColor: HOME_SCREEN_FLOATING_BUTTON_COLOR.parseColor(),
           onPressed: (int index) {
             setState(() {
-              for (int indexBtn = 0; indexBtn < isSelected.length; indexBtn++) {
+              for (int indexBtn = 0; indexBtn < widget.isSelected.length; indexBtn++) {
                 if (indexBtn == index) {
-                  isSelected[indexBtn] = true;
+                  widget.isSelected[indexBtn] = true;
                 } else {
-                  isSelected[indexBtn] = false;
+                  widget.isSelected[indexBtn] = false;
                 }
               }
             });
           }),
     );
+  }
+
+  int getSelectedIndex() {
+    return widget.isSelected.indexOf(true);
+  }
+}
+
+extension SelectedIndex on ToggleButtonGroup {
+  int getSelectedIndex() {
+    return this.isSelected.indexOf(true);
   }
 }

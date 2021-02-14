@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noticemeflutter/resources/const.dart';
 
 Size displaySize(BuildContext context) {
   debugPrint('Size = ' + MediaQuery.of(context).size.toString());
@@ -17,8 +18,8 @@ extension ExtendedColor on String {
   }
 }
 
-Color parseColor(String hexColor) {
-final hexCode = hexColor.replaceAll('#', '');
-return Color(int.parse('FF$hexCode', radix: 16));
+extension ExtendedDuration on String {
+  int convertDuration() {
+    return int.parse(this) * ONE_DAY_MILLISECONDS;
+  }
 }
-
