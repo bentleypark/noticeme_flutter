@@ -9,7 +9,12 @@ import 'package:noticemeflutter/widget/consumable_tile.dart';
 import 'package:noticemeflutter/widget/dash_line_box.dart';
 import 'package:noticemeflutter/widget/upper_text_widget.dart';
 
-class CategoryDetailScreen extends StatelessWidget {
+class CategoryDetailScreen extends StatefulWidget {
+  @override
+  _CategoryDetailScreenState createState() => _CategoryDetailScreenState();
+}
+
+class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   var title = Get.arguments;
 
   @override

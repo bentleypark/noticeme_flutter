@@ -6,6 +6,7 @@ import 'package:noticemeflutter/binding/home_biding.dart';
 import 'package:noticemeflutter/ui/add/add_cutom_consumable_screen.dart';
 import 'package:noticemeflutter/ui/category/category_detail_screen.dart';
 import 'package:noticemeflutter/ui/category/category_screen.dart';
+import 'package:noticemeflutter/ui/home/homepage.dart';
 import 'package:noticemeflutter/ui/home/homescreen.dart';
 import 'package:noticemeflutter/ui/onboarding/guide_screen.dart';
 import 'package:noticemeflutter/ui/splash/splash_screen.dart';
@@ -21,7 +22,7 @@ routes() => [
           page: () => GuideScreen(),
           binding: GuideBinding()),
       GetPage(
-          name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding()),
+          name: Routes.HOME, page: () => HomePage(), binding: HomeBinding()),
       GetPage(
         name: Routes.DB,
         page: () => DatabaseList(),

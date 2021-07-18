@@ -7,7 +7,12 @@ import 'package:noticemeflutter/widget/category_app_bar.dart';
 import 'package:noticemeflutter/widget/category_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
+  @override
+  _CategoryScreenState createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
   var categoryList = [
     Category('욕실', 'images/category_bath.svg'),
     Category('주방', 'images/category_kitchen.svg'),

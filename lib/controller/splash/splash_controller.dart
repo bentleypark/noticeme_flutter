@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/route_manager.dart';
 import 'package:noticemeflutter/resources/strings.dart';
 import 'package:noticemeflutter/utils/routes.dart';

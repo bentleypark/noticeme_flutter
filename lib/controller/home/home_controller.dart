@@ -1,8 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:noticemeflutter/data/db/noticeme_database.dart';
 import 'package:noticemeflutter/data/db/user_consumable_entity.dart';
+import 'package:noticemeflutter/data/repository/user_repository.dart';
 
 class HomeController extends GetxController {
+  final UserRepository userRepository;
+
+  HomeController({@required this.userRepository})
+      : assert(userRepository != null);
+
   bool checkUserConsumableList(int size) {
     if (size == 0) {
       return true;
@@ -11,24 +17,24 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<List<UserConsumableEntity>> getUserConsumableList() async {
-    final database = await $FloorNoticemeDatabase
-        .databaseBuilder('noticeme_database.db')
-        .build();
-    var dao = database.userConsumableDao;
-    var list = await dao.getAllConsumable();
+  final _userConsumableList = <UserConsumableEntity>[].obs;
 
-    var list2 = [
-      UserConsumableEntity(
-          '칫솔', 'images/img_toothbrush.png', '욕실', 7776000000, 0, 0, 0),
-      UserConsumableEntity(
-          '칫솔', 'images/img_toothbrush.png', '욕실', 7776000000, 0, 0, 0)
-    ];
+  get userConsumableList => this._userConsumableList.value;
 
-    if (list.isNotEmpty) {
-      return list;
-    } else {
-      return throw Exception('Failed to load data');
-    }
+  set postList(value) => this._userConsumableList.value = value;
+
+  getUserConsumableList() {
+    userRepository.getUserConsumableList().then((data) => this.postList = data);
+    // final database = await $FloorNoticemeDatabase
+    //     .databaseBuilder('noticeme_database.db')
+    //     .build();
+    // var dao = database.userConsumableDao;
+    // var list = await dao.getAllConsumable();
+    //
+    // if (list.isNotEmpty) {
+    //   this.postList = list;
+    // } else {
+    //   return throw Exception('Failed to load data');
+    // }
   }
 }

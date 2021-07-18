@@ -12,7 +12,12 @@ import 'package:noticemeflutter/widget/upper_text_widget.dart';
 import 'package:noticemeflutter/widget/userconsumable_tile.dart';
 import 'package:noticemeflutter/utils/ex_fucs.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   BuildContext context;
 
   @override

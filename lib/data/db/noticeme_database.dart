@@ -13,4 +13,9 @@ abstract class NoticemeDatabase extends FloorDatabase {
   ConsumableDao get consumableDao;
 
   UserConsumableDao get userConsumableDao;
+
+  static Future<NoticemeDatabase> init() async {
+    NoticemeDatabase instance = await $FloorNoticemeDatabase.databaseBuilder("noticeme_database.db").build();
+    return instance;
+  }
 }
